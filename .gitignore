@@ -1,6 +1,7 @@
 .svn/
 build/
-
+intermediate/
+lib/
 
 *.vcxproj.user
 *.suo

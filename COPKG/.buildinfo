@@ -13,21 +13,28 @@ x64  {
  
     targets: { 
 				//Libraries
-				"Cbc\MSVisualStudio\v10\x64\Release\libCbc.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libCbcSolver.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libCgl.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libClp.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libCoinUtils.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libOsi.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libOsiCbc.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libOsiClp.lib",
-				"Cbc\MSVisualStudio\v10\x64\Release\libOsiCommonTest.lib",
+				"lib\libCbc.lib",
+				"lib\libCbcSolver.lib",
+				"lib\libCgl.lib",
+				"lib\libClp.lib",
+				"lib\libCoinUtils.lib",
+				"lib\libOsi.lib",
+				"lib\libOsiCbc.lib",
+				"lib\libOsiClp.lib",
+				"lib\libOsiCommonTest.lib",
 				
 				//Program
-				"Cbc\MSVisualStudio\v10\x64\Release\cbc.exe",
+				"lib\cbc.exe",
 			} ;
  
-    build-command: "msbuild /p:Platform=x64 /p:Configuration=Release Cbc\MSVisualStudio\v10\Cbc.sln ";
+    build-command: @"
+		msbuild /p:Platform=x64 /p:Configuration=Release Cbc\MSVisualStudio\v10\Cbc.sln
+		";
 
-    clean-command: "";
+    clean-command: @"
+					rmdir /S /Q Cbc\MSVisualStudio\v10\x64 2>NUL
+					rmdir /S /Q intermediate 2>NUL
+					rmdir /S /Q lib 2>NUL
+					set ERRORLEVEL=0 
+					";
 }
